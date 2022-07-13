@@ -163,5 +163,6 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
             return _context.Usuario.FirstOrDefault(x => x.email == email.ToLower());
         }
+        
     }
 }

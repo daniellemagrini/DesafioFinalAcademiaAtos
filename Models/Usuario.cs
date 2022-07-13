@@ -5,14 +5,7 @@ namespace DesafioFinalAcademiaAtos.Models
 {
     [Table("Usuario")]
     public class Usuario
-    {
-        private readonly Contexto _context;
-
-        public Usuario(Contexto context)
-        {
-            _context = context;
-        }
-
+    { 
         [Key]
         [Column("id")]
         [Display(Name = "Código")]
@@ -90,11 +83,6 @@ namespace DesafioFinalAcademiaAtos.Models
         public bool ValidaSenha(string senha1)
         {
             return senha == senha1;
-        }
-
-        public Usuario BuscaEmail(string email)
-        {
-            return _context.Usuario.FirstOrDefault(x => x.email == email.ToLower());
         }
     }
 }
