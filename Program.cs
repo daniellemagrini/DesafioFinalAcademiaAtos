@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 //STRING DE CONEXÃO
 builder.Services.AddDbContext<Contexto>

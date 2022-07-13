@@ -5,7 +5,7 @@ namespace DesafioFinalAcademiaAtos.Models
 {
     [Table("Usuario")]
     public class Usuario
-    { 
+    {
         [Key]
         [Column("id")]
         [Display(Name = "Código")]
@@ -79,6 +79,10 @@ namespace DesafioFinalAcademiaAtos.Models
         [Required]
         [StringLength(60, MinimumLength = 8)]
         public string senha { get; set; }
+
+        public Usuario()
+        {
+        }
 
         public bool ValidaSenha(string senha1)
         {

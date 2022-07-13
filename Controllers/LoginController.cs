@@ -7,6 +7,13 @@ namespace DesafioFinalAcademiaAtos.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+
+        public LoginController(IUsuarioRepositorio usuarioRepositorio)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -19,10 +26,15 @@ namespace DesafioFinalAcademiaAtos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
-                    if (loginModel.login == "adm@adm.com" && loginModel.senha == "12345678")
+                    Usuario usuario = _usuarioRepositorio.BuscaEmail(loginModel.login);
+                    if (usuario != null)
                     {
-                        return RedirectToAction("Index", "Home");
+                        if (usuario.ValidaSenha(loginModel.senha))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                        TempData["MensagemErro"] = $"Senha inválida";
                     }
 
                     TempData["MensagemErro"] = $"Usuário e/ou Senha inválido(os)";

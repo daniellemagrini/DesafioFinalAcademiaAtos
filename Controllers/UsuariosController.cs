@@ -158,11 +158,6 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
           return (_context.Usuario?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-
-        public Usuario BuscaEmail(string email)
-        {
-            return _context.Usuario.FirstOrDefault(x => x.email == email.ToLower());
-        }
         
     }
 }
