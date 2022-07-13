@@ -1,0 +1,79 @@
+﻿@model DesafioFinalAcademiaAtos.Models.Pergunta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Pergunta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="pergunta" class="control-label"></label>
+                <input asp-for="pergunta" class="form-control" />
+                <span asp-validation-for="pergunta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="resposta" class="control-label"></label>
+                <input asp-for="resposta" class="form-control" />
+                <span asp-validation-for="resposta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoria" class="control-label"></label>
+                <input asp-for="categoria" class="form-control" />
+                <span asp-validation-for="categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nivel" class="control-label"></label>
+                <input asp-for="nivel" class="form-control" />
+                <span asp-validation-for="nivel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="solucao" class="control-label"></label>
+                <input asp-for="solucao" class="form-control" />
+                <span asp-validation-for="solucao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alternativaA" class="control-label"></label>
+                <input asp-for="alternativaA" class="form-control" />
+                <span asp-validation-for="alternativaA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alternativaB" class="control-label"></label>
+                <input asp-for="alternativaB" class="form-control" />
+                <span asp-validation-for="alternativaB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alternativaC" class="control-label"></label>
+                <input asp-for="alternativaC" class="form-control" />
+                <span asp-validation-for="alternativaC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alternativaD" class="control-label"></label>
+                <input asp-for="alternativaD" class="form-control" />
+                <span asp-validation-for="alternativaD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="alternativaE" class="control-label"></label>
+                <input asp-for="alternativaE" class="form-control" />
+                <span asp-validation-for="alternativaE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

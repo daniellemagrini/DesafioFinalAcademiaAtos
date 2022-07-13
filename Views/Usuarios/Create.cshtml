@@ -1,0 +1,258 @@
+﻿@model DesafioFinalAcademiaAtos.Models.Usuario
+
+@{
+    ViewData["Title"] = "CadastroUsuario";
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">  <!--Idioma Português-Brasil-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Comece seu teste</title>
+
+    <!-- Link estilo Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Link estilo css-->
+    <link rel="stylesheet" type="text/css" href="/css/site.css"/>
+
+    <!-- JavaScript -->
+    <script src="/js/site.js" defer></script>
+
+</head>  
+
+<body> 
+    <div id="content" class="container">
+        <form asp-action="Create" id="form" name="form">
+          <div class="d-flex justify-content-center" asp-validation-summary="ModelOnly">
+            <h1>Cadastro de usuário</h1>
+          </div>
+          <div id="personal-data" class="content-container">
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label asp-for="nome" for="nome">Nome Completo</label>
+                  <small class="text-muted"> *</small>
+                  <input asp-for="nome"
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    class="form-control need-validate "
+                    placeholder="Nome"
+                    maxlength="60"
+                    required
+                  />
+                   <span asp-validation-for="nome" class="text-danger"></span>
+                </div>
+                <div class="col-3">
+                    <label asp-for="cpf" for="cpf">CPF</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="cpf"
+                      type="text"
+                      id="cpf"
+                      name="cpf"
+                      class="form-control need-validate "
+                      placeholder="Apenas números"
+                      maxlength="11"
+                      required
+                    />
+                    <span asp-validation-for="cpf" class="text-danger"></span>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                  <div class="col-3">
+                  <label asp-for="telefone" for="telefone">Telefone</label>
+                  <small class="text-muted"> *</small>
+                  <input asp-for="telefone"
+                    type="text"
+                    id="telefone"
+                    name="telefone"
+                    class="form-control need-validate "
+                    placeholder="(DDD)99999-9999"
+                    maxlength="14"
+                    required
+                  />
+                  <span asp-validation-for="telefone" class="text-danger"></span>
+                </div>
+                <div class="col">
+                  <label asp-for="email" for="email">E-mail</label>
+                  <small class="text-muted"> *</small>
+                  <input asp-for="email"
+                    type="email"
+                    onblur="validarEmail()"
+                    onfocus="redefinirMsg()" id="email"
+                    id="email"
+                    name="email"
+                    class="form-control need-validate "
+                    placeholder="email@email.com"
+                    maxlength="60"
+                    required
+                  />
+                  <span asp-validation-for="email" class="text-danger" id="mailError"></span>
+                </div>
+              <div class="col-4">
+                <label asp-for="senha" for="senha">Senha</label>
+                <small class="text-muted"> *</small>
+                <input asp-for="senha"
+                  type="password"
+                  id="senha"
+                  class="form-control need-validate "
+                  placeholder="Min 8 caracteres"
+                  maxlength="20"
+                  minlength="8"
+                  onkeyup="validarSenhaForca()"
+                  required
+                />
+                <span asp-validation-for="senha" id="senhaError"></span>
+                <span id="spnMostrarSenha" class="glyphicon glyphicon glyphicon-eye-open form-control-feedback" onclick="mostrarOcultarSenha()"></span>
+                <div class="form-group row">
+                  <label class="col-sm-1 col-form-label"></label>
+                  <div class="col-sm-9">
+                     <div id="erroSenhaForca"></div>
+                  </div>
+              </div>
+                </div>
+            </div>
+            <div class="form-group"></div>
+                <div class="row">
+                    <div class="col-2">
+                    <label asp-for="cep" for="cep">CEP</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="cep"
+                        onblur="pesquisacep(this.value)"
+                        type="text"
+                        id="cep"
+                        class="form-control need-validate "
+                        placeholder="00000-000"
+                        maxlength="8"
+                        required
+                    />
+                    <span asp-validation-for="cep" class="text-danger"></span>
+                    </div>
+                <div class="col-6">
+                    <label asp-for="logradouro" for="endereco">Endereco</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="logradouro"
+                        type="text"
+                        id="endereco"
+                        class="form-control need-validate "
+                        placeholder="Rua/Avenida..."
+                        required
+                    />
+                    <span asp-validation-for="logradouro" class="text-danger"></span>
+                </div>
+                <div class="col-1">
+                    <label asp-for="numero_endereco" for="numero_endereco">Nº</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="numero_endereco"
+                        type="text"
+                        id="numero_endereco"
+                        class="form-control need-validate "
+                        placeholder="n°"
+                        required
+                    />
+                    <span asp-validation-for="numero_endereco" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="complemento" for="complemento">Complemento</label>
+                    <input asp-for="complemento"
+                        type="text"
+                        id="complemento"
+                        class="form-control need-validate "
+                        placeholder="Apto/Bloco..."
+                    />
+                    <span asp-validation-for="complemento" class="text-danger"></span>
+                </div>
+                </div>
+            </div>
+                <div class="form-group"></div>
+                <div class="row">
+                    <div class="col">
+                    <label asp-for="bairro" for="bairro">Bairro</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="bairro"
+                        type="text"
+                        id="bairro"
+                        class="form-control need-validate "
+                        placeholder="Bairro"
+                        required
+                    />
+                    <span asp-validation-for="bairro" class="text-danger"></span>
+                    </div>
+                <div class="col">
+                    <label asp-for="cidade" for="cidade">Cidade</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="cidade"
+                        type="text"
+                        id="cidade"
+                        class="form-control need-validate "
+                        placeholder="Cidade"
+                        required
+                    />
+                    <span asp-validation-for="cidade" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="estado" for="estado">Estado</label>
+                    <small class="text-muted"> *</small>
+                    <input asp-for="estado"
+                        type="text"
+                        id="estado"
+                        class="form-control need-validate "
+                        placeholder="Estado"
+                        required
+                    />
+                    <span asp-validation-for="estado" class="text-danger"></span>
+                </div>
+            </div>
+            </div>            
+            <div id="termosLegais-data" class="content-container">
+                <p><b>Termos Legais</b></p>
+                <div class="form-group">
+                    <textarea class="form-control" id="termosLegais" rows="5" style="background-color: #ececec" readonly>Seja bem-vindo ao nosso site. Leia com atenção todos os termos abaixo. Este documento, e todo o conteúdo do site é oferecido por nós, neste termo representado apenas por “EMPRESA”, que regulamenta todos os direitos e obrigações com todos que acessam o site, denominado neste termo como “VISITANTE”, reguardado todos os direitos previstos na legislação, trazem as cláusulas abaixo como requisito para acesso e visita do mesmo, situado neste endereço. A permanência no website implica-se automaticamente na leitura e aceitação tácita do presente termos de uso a seguir. Este termo foi atualizado pela última vez em 11 de julho de 2022.</textarea>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="terms"
+                      required
+                    />
+                    <label class="custom-control-label" for="terms"
+                      >Aceito os <a href="#">termos de uso e privacidade</a></label
+                    >
+                    <div class="invalid-feedback">
+                      Necessário aceitar os termos para prosseguir!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary btn-lg btn-block" />
+                <input type="reset" value="Limpar" class="btn btn-secondary btn-lg btn-block" />
+                <div>
+                    <a asp-controller="Login" asp-action="Index">Voltar a tela de Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
