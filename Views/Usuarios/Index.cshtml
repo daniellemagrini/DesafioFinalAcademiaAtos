@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DesafioFinalAcademiaAtos.Models.Usuario>
+﻿@model Usuario
 
 @{
     ViewData["Title"] = "Index";
@@ -37,7 +37,7 @@
     <form action="index.html">
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="nome">Nome Completo</label>
+          <label @Html.DisplayNameFor(model => model.nome) for="nome">Nome Completo</label>
           <input type="text" class="form-control" id="nome" disabled>
         </div>
       <div class="form-group col-md-2">
@@ -171,51 +171,4 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.logradouro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numero_endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.complemento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.senha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
 </table>

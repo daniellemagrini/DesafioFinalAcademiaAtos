@@ -159,6 +159,11 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
           return (_context.Usuario?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        
+
+        public IActionResult MeusDados()
+        {
+            return View("Index");
+        }
+
     }
 }
