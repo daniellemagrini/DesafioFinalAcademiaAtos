@@ -158,5 +158,10 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
           return (_context.Pergunta?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public IActionResult ComecarTeste()
+        {
+            return View("Index");
+        }
     }
 }
