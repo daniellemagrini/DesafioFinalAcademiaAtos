@@ -88,5 +88,12 @@ namespace DesafioFinalAcademiaAtos.Models
         {
             return senha == senha1;
         }
+
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            senha = novaSenha;
+            return novaSenha;
+        }
     }
 }

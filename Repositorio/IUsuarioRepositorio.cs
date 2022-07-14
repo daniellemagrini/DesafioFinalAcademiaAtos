@@ -5,5 +5,7 @@ namespace DesafioFinalAcademiaAtos.Repositorio
     public interface IUsuarioRepositorio
     {
         Usuario BuscaEmail(string email);
+        Usuario SenhaRedefinida(String senha);
+        Usuario SenhaRedefinida(Usuario usuario);
     }
 }

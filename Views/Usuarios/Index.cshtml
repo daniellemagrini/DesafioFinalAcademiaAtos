@@ -4,11 +4,131 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<html lang="pt-br">  <!--Idioma Português-Brasil-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dados Cadastrados</title>
+
+    <!-- Link estilo Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Link estilo css-->
+    <link rel="stylesheet" type="text/css" href="/css/site.css"/>
+
+    <!-- JavaScript -->
+    <script src="/js/site.js"></script>
+
+</head>  
+
+<body>  
+   <div id="main" class="container-fluid">   
+    <h3 class="page-header">Informações Pessoais</h3>    
+    <form action="index.html">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome Completo</label>
+          <input type="text" class="form-control" id="nome" disabled>
+        </div>
+      <div class="form-group col-md-2">
+          <label for="cpf">CPF</label>
+          <input type="text" class="form-control" id="cpf" disabled>
+        </div>
+      <div class="form-group col-md-4">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" disabled>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group col-md-2">
+          <label for="senha">Senha</label>
+          <input type="password" class="form-control" id="senha" disabled>
+        </div>
+      <div class="form-group col-md-2">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" disabled>
+        </div>
+      <div class="form-group col-md-4">
+          <label for="logradouro">Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" disabled>
+        </div>
+      <div class="form-group col-md-1">
+          <label for="numeroEndereco">Nº</label>
+          <input type="text" class="form-control" id="numeroEndereco" disabled>
+        </div>
+      <div class="form-group col-md-3">
+          <label for="complemento">Complemento</label>
+          <input type="text" class="form-control" id="complemento" disabled>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group col-md-4">
+          <label for="bairro">Bairro</label>
+          <input type="text" class="form-control" id="bairro" disabled>
+        </div>
+      <div class="form-group col-md-4">
+          <label for="cidade">Cidade</label>
+          <input type="email" class="form-control" id="cidade" disabled>
+        </div>
+      <div class="form-group col">
+          <label for="estado">Estado</label>
+          <input type="email" class="form-control" id="estado" disabled>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group col-md-2">
+          <label for="dataTestePortugues">Data do útimo teste de Português</label>
+          <input type="time" class="form-control" id="dataTestePortugues" disabled>
+        </div>
+      <div class="form-group col-md-1">
+          <label for="notaPortugues">Nota Português</label>
+          <input type="text" class="form-control" id="notaPortugues" disabled>
+        </div>
+      <div class="form-group col-md-2">
+          <label for="dataTesteIngles">Data do útimo teste de Inglês</label>
+          <input type="time" class="form-control" id="dataTesteIngles" disabled>
+        </div>
+      <div class="form-group col-md-1">
+          <label for="notaIngles">Nota Inglês</label>
+          <input type="text" class="form-control" id="notaIngles">
+        </div>
+      <div class="form-group col-md-2">
+          <label for="dataTesteLogica">Data do útimo teste de Lógica</label>
+          <input type="time" class="form-control" id="dataTesteLogica" disabled>
+        </div>
+      <div class="form-group col-md-1">
+          <label for="notaLogica">Nota Lógica</label>
+          <input type="text" class="form-control" id="notaLogica" disabled>
+        </div>
+    </div>   
+    <hr/>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-danger">Editar</button>
+        <button type="button" class="btn btn-light">Cancelar</button>
+      </div>
+    </div>
+  
+    </form>
+   </div>
+</body>
+</html>
+
+
 <table class="table">
     <thead>
         <tr>
