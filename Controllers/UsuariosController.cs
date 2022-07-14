@@ -59,6 +59,7 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.SenhaHash();
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Login");

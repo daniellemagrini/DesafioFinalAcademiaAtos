@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DesafioFinalAcademiaAtos.Auxiliar;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioFinalAcademiaAtos.Models
@@ -86,13 +87,18 @@ namespace DesafioFinalAcademiaAtos.Models
 
         public bool ValidaSenha(string senha1)
         {
-            return senha == senha1;
+            return senha == senha1.GerarHash();
+        }
+
+        public void SenhaHash()
+        {
+            senha = senha.GerarHash();
         }
 
         public string GerarNovaSenha()
         {
             string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
-            senha = novaSenha;
+            senha = novaSenha.GerarHash();
             return novaSenha;
         }
     }
