@@ -182,26 +182,22 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
             try
             {
-                Usuario usuario = null;
+                Usuario usuario = _usuarioRepositorio.BuscaEmail(usuarioEdit.email);
+
+                usuario.nome = usuarioEdit.nome;
+                usuario.cpf = usuarioEdit.cpf;
+                usuario.email = usuarioEdit.email;
+                usuario.cep = usuarioEdit.cep;
+                usuario.logradouro = usuarioEdit.logradouro;
+                usuario.numero_endereco = usuarioEdit.numero_endereco;
+                usuario.complemento = usuarioEdit.complemento;
+                usuario.bairro = usuarioEdit.bairro;
+                usuario.cidade = usuarioEdit.cidade;
+                usuario.estado = usuarioEdit.estado;
+                usuario.telefone = usuarioEdit.telefone;
 
                 if (ModelState.IsValid)
                 {
-                    usuario = new Usuario()
-                    {
-                        Id = usuarioEdit.Id,
-                        nome = usuarioEdit.nome,
-                        cpf = usuarioEdit.cpf,
-                        email = usuarioEdit.email,
-                        cep = usuarioEdit.cep,
-                        logradouro = usuarioEdit.logradouro,
-                        numero_endereco = usuarioEdit.numero_endereco,
-                        complemento = usuarioEdit.complemento,
-                        bairro = usuarioEdit.bairro,
-                        cidade = usuarioEdit.cidade,
-                        estado = usuarioEdit.estado,
-                        telefone = usuarioEdit.telefone
-                    };
-
                     usuario = _usuarioRepositorio.Atualizar(usuario);
                     TempData["MensagemSucesso"] = "Dados alterados com sucesso";
                     return RedirectToAction("Index", "Home");

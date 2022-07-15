@@ -60,7 +60,6 @@ namespace DesafioFinalAcademiaAtos.Repositorio
             _contexto.SaveChanges();
 
             return usuario;
-
         }
 
         public Usuario SenhaRedefinida(string senha)
