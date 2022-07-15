@@ -4,85 +4,114 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<!DOCTYPE html>
 
-<h4>Usuario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="nome" class="control-label"></label>
-                <input asp-for="nome" class="form-control" />
-                <span asp-validation-for="nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cpf" class="control-label"></label>
-                <input asp-for="cpf" class="form-control" />
-                <span asp-validation-for="cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cep" class="control-label"></label>
-                <input asp-for="cep" class="form-control" />
-                <span asp-validation-for="cep" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="logradouro" class="control-label"></label>
-                <input asp-for="logradouro" class="form-control" />
-                <span asp-validation-for="logradouro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="numero_endereco" class="control-label"></label>
-                <input asp-for="numero_endereco" class="form-control" />
-                <span asp-validation-for="numero_endereco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="complemento" class="control-label"></label>
-                <input asp-for="complemento" class="form-control" />
-                <span asp-validation-for="complemento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="bairro" class="control-label"></label>
-                <input asp-for="bairro" class="form-control" />
-                <span asp-validation-for="bairro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cidade" class="control-label"></label>
-                <input asp-for="cidade" class="form-control" />
-                <span asp-validation-for="cidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="estado" class="control-label"></label>
-                <input asp-for="estado" class="form-control" />
-                <span asp-validation-for="estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="telefone" class="control-label"></label>
-                <input asp-for="telefone" class="form-control" />
-                <span asp-validation-for="telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="senha" class="control-label"></label>
-                <input asp-for="senha" class="form-control" />
-                <span asp-validation-for="senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<html lang="pt-br">  <!--Idioma Português-Brasil-->
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dados Cadastrados</title>
+
+    <!-- Link estilo Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Link estilo css-->
+    <link rel="stylesheet" type="text/css" href="/css/site.css"/>
+
+    <!-- JavaScript -->
+    <script src="/js/site.js"></script>
+
+</head>  
+
+<body>  
+   <div id="main" class="container-fluid">   
+    <h3 class="page-header">Editar Dados</h3>
+
+        <div id="main" class="container-fluid">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="row">       
+                    <div class="form-group col-md-6">
+                        <label asp-for="nome" class="control-label"></label>
+                        <input asp-for="nome" class="form-control" />
+                        <span asp-validation-for="nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="cpf" class="control-label"></label>
+                        <input asp-for="cpf" class="form-control" />
+                        <span asp-validation-for="cpf" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="email" class="control-label"></label>
+                        <input asp-for="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="cep" class="control-label"></label>
+                        <input asp-for="cep" class="form-control" />
+                        <span asp-validation-for="cep" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="logradouro" class="control-label"></label>
+                        <input asp-for="logradouro" class="form-control" />
+                        <span asp-validation-for="logradouro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label asp-for="numero_endereco" class="control-label"></label>
+                        <input asp-for="numero_endereco" class="form-control" />
+                        <span asp-validation-for="numero_endereco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="complemento" class="control-label"></label>
+                        <input asp-for="complemento" class="form-control" />
+                        <span asp-validation-for="complemento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label asp-for="bairro" class="control-label"></label>
+                        <input asp-for="bairro" class="form-control" />
+                        <span asp-validation-for="bairro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="cidade" class="control-label"></label>
+                        <input asp-for="cidade" class="form-control" />
+                        <span asp-validation-for="cidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label asp-for="estado" class="control-label"></label>
+                        <input asp-for="estado" class="form-control" />
+                        <span asp-validation-for="estado" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="telefone" class="control-label"></label>
+                        <input asp-for="telefone" class="form-control" />
+                        <span asp-validation-for="telefone" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-primary" asp-controller="Usuarios" asp-action="Editar"/>
+                    <input type="submit" value="Cancelar" class="btn btn-light" asp-controller="Home" asp-action="Index" />
+                </div>
+            </div>
+            </form>
+        </div>
+   </div>
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

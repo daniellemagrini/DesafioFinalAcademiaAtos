@@ -38,53 +38,53 @@
       <div class="row">
         <div class="form-group col-md-6">
           <label @Html.DisplayNameFor(model => model.nome) for="nome">Nome Completo</label>
-          <input type="text" class="form-control" id="nome" disabled>
+          @Html.TextBoxFor(model => model.nome, new {@class="form-control", @id="nome", @disabled="true"})
         </div>
-      <div class="form-group col-md-2">
-          <label for="cpf">CPF</label>
-          <input type="text" class="form-control" id="cpf" disabled>
+        <div class="form-group col-md-2">
+          <label @Html.DisplayNameFor(model => model.cpf) for="cpf">CPF</label>
+          @Html.TextBoxFor(model => model.cpf, new {@class="form-control", @id="nome", @disabled="true"})
         </div>
-      <div class="form-group col-md-4">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" disabled>
+        <div class="form-group col-md-4">
+          <label @Html.DisplayNameFor(model => model.email) for="email">E-mail</label>
+          @Html.TextBoxFor(model => model.email, new {@class="form-control", @id="email", @disabled="true"})
         </div>
     </div>
     
     <div class="row">
         <div class="form-group col-md-2">
-          <label for="senha">Senha</label>
-          <input type="password" class="form-control" id="senha" disabled>
+          <label @Html.DisplayNameFor(model => model.cep) for="cep">CEP</label>
+          @Html.TextBoxFor(model => model.cep, new {@class="form-control", @id="cep", @disabled="true"})
         </div>
-      <div class="form-group col-md-2">
-          <label for="cep">CEP</label>
-          <input type="text" class="form-control" id="cep" disabled>
+        <div class="form-group col-md-6">
+          <label @Html.DisplayNameFor(model => model.logradouro) for="logradouro">Logradouro</label>
+          @Html.TextBoxFor(model => model.logradouro, new {@class="form-control", @id="logradouro", @disabled="true"})
         </div>
-      <div class="form-group col-md-4">
-          <label for="logradouro">Logradouro</label>
-          <input type="text" class="form-control" id="logradouro" disabled>
+        <div class="form-group col-md-1">
+          <label @Html.DisplayNameFor(model => model.numero_endereco) for="numero_endereco">Nº</label>
+          @Html.TextBoxFor(model => model.numero_endereco, new {@class="form-control", @id="numero_endereco", @disabled="true"})
         </div>
-      <div class="form-group col-md-1">
-          <label for="numeroEndereco">Nº</label>
-          <input type="text" class="form-control" id="numeroEndereco" disabled>
-        </div>
-      <div class="form-group col-md-3">
-          <label for="complemento">Complemento</label>
-          <input type="text" class="form-control" id="complemento" disabled>
+        <div class="form-group col-md-3">
+          <label @Html.DisplayNameFor(model => model.complemento) for="complemento">Complemento</label>
+          @Html.TextBoxFor(model => model.complemento, new {@class="form-control", @id="complemento", @disabled="true"})
         </div>
     </div>
     
     <div class="row">
         <div class="form-group col-md-4">
-          <label for="bairro">Bairro</label>
-          <input type="text" class="form-control" id="bairro" disabled>
+          <label @Html.DisplayNameFor(model => model.bairro) for="bairro">Bairro</label>
+          @Html.TextBoxFor(model => model.bairro, new {@class="form-control", @id="bairro", @disabled="true"})
         </div>
-      <div class="form-group col-md-4">
-          <label for="cidade">Cidade</label>
-          <input type="email" class="form-control" id="cidade" disabled>
+        <div class="form-group col-md-4">
+          <label @Html.DisplayNameFor(model => model.cidade) for="cidade">Cidade</label>
+          @Html.TextBoxFor(model => model.cidade, new {@class="form-control", @id="cidade", @disabled="true"})
         </div>
-      <div class="form-group col">
-          <label for="estado">Estado</label>
-          <input type="email" class="form-control" id="estado" disabled>
+        <div class="form-group col-md-1">
+          <label @Html.DisplayNameFor(model => model.estado) for="estado">Estado</label>
+          @Html.TextBoxFor(model => model.estado, new {@class="form-control", @id="estado", @disabled="true"})
+        </div>
+        <div class="form-group col-md-3">
+          <label @Html.DisplayNameFor(model => model.telefone) for="telefone">Telefone</label>
+          @Html.TextBoxFor(model => model.telefone, new {@class="form-control", @id="telefone", @disabled="true"})
         </div>
     </div>
     
@@ -117,9 +117,8 @@
     <hr/>
     <div class="row">
       <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-danger">Editar</button>
-        <button type="button" class="btn btn-light">Cancelar</button>
+        <button type="submit" class="btn btn-danger" asp-controller="Usuarios" asp-action="EditarDados">Editar</button>
+        <button type="submit" class="btn btn-light" asp-controller="Home" asp-action="Index">Voltar</button>
       </div>
     </div>
   
@@ -127,48 +126,3 @@
    </div>
 </body>
 </html>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cep)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.logradouro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numero_endereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.complemento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.senha)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-</table>

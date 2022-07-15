@@ -7,5 +7,6 @@ namespace DesafioFinalAcademiaAtos.Repositorio
         Usuario BuscaEmail(string email);
         Usuario SenhaRedefinida(String senha);
         Usuario SenhaRedefinida(Usuario usuario);
+        Usuario Atualizar(Usuario usuario);
     }
 }

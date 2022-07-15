@@ -6,16 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DesafioFinalAcademiaAtos.Models;
+using DesafioFinalAcademiaAtos.Auxiliar;
+using DesafioFinalAcademiaAtos.Repositorio;
 
 namespace DesafioFinalAcademiaAtos.Controllers
 {
     public class UsuariosController : Controller
     {
         private readonly Contexto _context;
+        private readonly ISessao _sessao;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
 
-        public UsuariosController(Contexto context)
+        public UsuariosController(Contexto context, ISessao sessao, IUsuarioRepositorio usuarioRepositorio)
         {
             _context = context;
+            _sessao = sessao;
+            _usuarioRepositorio = usuarioRepositorio;
         }
 
         // GET: Usuarios
@@ -162,8 +168,52 @@ namespace DesafioFinalAcademiaAtos.Controllers
 
         public IActionResult MeusDados()
         {
-            return View("Index");
+            var usuario = _sessao.BuscarSessao();
+            return View("Index", usuario);
         }
 
+        public IActionResult EditarDados()
+        {
+            var usuario = _sessao.BuscarSessao();
+            return View("Edit", usuario);
+        }
+
+        public IActionResult Editar(UsuarioEdit usuarioEdit)
+        {
+            try
+            {
+                Usuario usuario = null;
+
+                if (ModelState.IsValid)
+                {
+                    usuario = new Usuario()
+                    {
+                        Id = usuarioEdit.Id,
+                        nome = usuarioEdit.nome,
+                        cpf = usuarioEdit.cpf,
+                        email = usuarioEdit.email,
+                        cep = usuarioEdit.cep,
+                        logradouro = usuarioEdit.logradouro,
+                        numero_endereco = usuarioEdit.numero_endereco,
+                        complemento = usuarioEdit.complemento,
+                        bairro = usuarioEdit.bairro,
+                        cidade = usuarioEdit.cidade,
+                        estado = usuarioEdit.estado,
+                        telefone = usuarioEdit.telefone
+                    };
+
+                    usuario = _usuarioRepositorio.Atualizar(usuario);
+                    TempData["MensagemSucesso"] = "Dados alterados com sucesso";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                return View(usuario);
+            }
+            catch(Exception e)
+            {
+                TempData["MensagemErro"] = $"Não foi possível atualizar seus dados. Tente novamente mais tarde. Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }
