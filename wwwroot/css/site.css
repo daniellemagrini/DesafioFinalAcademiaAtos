@@ -27,7 +27,7 @@ header {
 body {
     margin-bottom: 80px;
     padding-top: 20px;
-    background: #836dfc;
+    background: #d3ceec;
 }
 
 form {
@@ -85,4 +85,20 @@ span.spnMostrarSenha {
 
 .form-group .glyphicon-eye-open:hover {
         cursor: pointer
+}
+
+.container-tb {
+    display: block;
+    padding: 24px 8px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+}
+
+.col_info {
+    padding: 9px 0px 10px 10px;
+}
+
+.tabela {
+    margin: 10px;    
 }
