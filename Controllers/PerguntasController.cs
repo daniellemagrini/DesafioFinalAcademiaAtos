@@ -162,9 +162,21 @@ namespace DesafioFinalAcademiaAtos.Controllers
           return (_context.Pergunta?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public IActionResult ComecarTeste()
+        public async Task<IActionResult> ComecarTeste()
         {
-            return View("Index");
+            List<Pergunta> perguntaSelecionada = _perguntaRepositorio.ListarPerguntas();
+            List<int> idsSelecionados = new List<int>();
+            Random random = new Random();
+            int idSelecao = random.Next(1, perguntaSelecionada.Count);            
+            idsSelecionados.Add(idSelecao);
+
+            while (idsSelecionados.Contains(idSelecao))
+            {
+                idSelecao = random.Next(1, perguntaSelecionada.Count);
+                idsSelecionados.Add(idSelecao);
+            }
+
+            return View(perguntaSelecionada);
         }
     }
 }

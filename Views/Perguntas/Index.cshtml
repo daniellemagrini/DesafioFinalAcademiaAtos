@@ -39,6 +39,7 @@
             {
                 foreach (Pergunta pergunta in Model)
                 {
+                    //APARECER A PERGUNTA SELECIONADA ALEATÓRIAMENTE JUNTO COM AS ALTERNATIVAS
                    <tr>@pergunta.pergunta</tr> 
                    <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
                    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaA</td></tr>
@@ -46,12 +47,14 @@
                    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaC</td></tr>
                    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaD></td></tr>
                    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaE</td></tr>
-                }
+                    // APARECER A RESPOSTA QUANDO CLICAR NO BOTÃO RESPOSTA
+               }
             }   
   </table>
 
   <div class="form-group">
     <input type="submit" value="Anterior" class="btn btn-primary" />
+    <input type="submit" value="Resposta" class="btn btn-secondary" /> 
     <input type="submit" value="Próxima" class="btn btn-primary" />
   </div>
 

@@ -6,7 +6,5 @@ namespace DesafioFinalAcademiaAtos.Repositorio
     {
         List<Pergunta> ListarPerguntas();
         List<int> SelecionarPergunta();
-
-
     }
 }
