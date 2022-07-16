@@ -13,9 +13,9 @@ namespace DesafioFinalAcademiaAtos.Controllers
     public class PerguntasController : Controller
     {
         private readonly Contexto _context;
-        private readonly PerguntaRepositorio _perguntaRepositorio;
+        private readonly IPerguntaRepositorio _perguntaRepositorio;
 
-        public PerguntasController(Contexto context, PerguntaRepositorio perguntaRepositorio)
+        public PerguntasController(Contexto context, IPerguntaRepositorio perguntaRepositorio)
         {
             _context = context;
             _perguntaRepositorio = perguntaRepositorio;
@@ -164,8 +164,7 @@ namespace DesafioFinalAcademiaAtos.Controllers
 
         public IActionResult ComecarTeste()
         {
-            List<Pergunta> perguntas = _perguntaRepositorio.ListarPerguntas();
-            return View("perguntas");
+            return View("Index");
         }
     }
 }
