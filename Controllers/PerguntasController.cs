@@ -162,9 +162,26 @@ namespace DesafioFinalAcademiaAtos.Controllers
           return (_context.Pergunta?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public async Task<IActionResult> ComecarTeste()
+        public IActionResult ComecarTeste(Pergunta pergunta)
         {
-            List<Pergunta> perguntaSelecionada = _perguntaRepositorio.ListarPerguntas();
+            try
+            {
+                Pergunta perguntaBD = _perguntaRepositorio.BuscaPergunta(pergunta.Id);
+
+                if (ModelState.IsValid)
+                {
+                    perguntaBD = _perguntaRepositorio.EscolhePergunta(pergunta);
+                    return View(pergunta);
+                }
+
+                return View(pergunta);
+            }
+            catch(Exception e)
+            {
+                TempData["MensagemErro"] = $"Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index", "Home");
+            }
+            /*List<Pergunta> perguntaSelecionada = _perguntaRepositorio.ListarPerguntas();
             List<int> idsSelecionados = new List<int>();
             Random random = new Random();
             int idSelecao = random.Next(1, perguntaSelecionada.Count);            
@@ -176,7 +193,7 @@ namespace DesafioFinalAcademiaAtos.Controllers
                 idsSelecionados.Add(idSelecao);
             }
 
-            return View(perguntaSelecionada);
+            return View(perguntaSelecionada);*/
         }
     }
 }

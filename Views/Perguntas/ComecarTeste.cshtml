@@ -1,0 +1,62 @@
+﻿@model DesafioFinalAcademiaAtos.Models.Pergunta
+
+@{
+    ViewData["Title"] = "ComecarTeste";
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">  <!--Idioma Português-Brasil-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Teste de Português</title>
+
+    <!-- Link estilo Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Link estilo css-->
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+
+    <!-- JavaScript -->
+    <script src="javascript.js" defer></script>
+</head>  
+
+
+
+<h1>Bons estudos</h1>
+
+<body style="background-color: #d3ceec">  
+  <div class="container-tb">
+  <table id="tabela" class="questoes">
+
+        <tr>@Html.DisplayFor(model => model.pergunta, new {@class="form-control", @id="pergunta", @disabled="true"})</tr>
+        <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaA, new {@class="form-control", @id="alternativaA", @disabled="true"})</td></tr>
+        <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaB, new {@class="form-control", @id="alternativaB", @disabled="true"})</td></tr>
+        <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaC, new {@class="form-control", @id="alternativaC", @disabled="true"})</td></tr>
+        <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaD, new {@class="form-control", @id="alternativaD", @disabled="true"})</td></tr>
+        <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaE, new {@class="form-control", @id="alternativaE", @disabled="true"})</td></tr>
+            
+        
+  </table>
+
+  <div class="form-group">
+    <input type="submit" value="Resposta" class="btn btn-secondary" /> 
+    <input type="submit" asp-controller="Perguntas" asp-action="ComecarTeste" value="Próxima" class="btn btn-primary" />
+  </div>
+
+  <div>
+    <a asp-controller="Home" asp-action="Index">Voltar ao Menu principal</a>
+</div>
+
+  </div>
+</body>
+</html>

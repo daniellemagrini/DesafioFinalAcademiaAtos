@@ -11,6 +11,39 @@ namespace DesafioFinalAcademiaAtos.Repositorio
             this._contexto = contexto;
         }
 
+        public Pergunta BuscaPergunta(int id)
+        {
+            Random random = new Random();
+            id = random.Next(1,3);
+
+            return _contexto.Pergunta.FirstOrDefault(x => x.Id == id);
+        }
+
+        public Pergunta EscolhePergunta(Pergunta pergunta)
+        {
+            Pergunta perguntaBD = BuscaPergunta(pergunta.Id);
+
+            if (perguntaBD == null)
+            {
+                throw new Exception("Houve uma falha na atualização");
+            }
+            else
+            {
+                perguntaBD.pergunta = pergunta.pergunta;
+                perguntaBD.resposta = pergunta.resposta;
+                perguntaBD.categoria = pergunta.categoria;
+                perguntaBD.nivel = pergunta.nivel;
+                perguntaBD.solucao = pergunta.solucao;
+                perguntaBD.alternativaA = pergunta.alternativaA;
+                perguntaBD.alternativaB = pergunta.alternativaB;
+                perguntaBD.alternativaC = pergunta.alternativaC;
+                perguntaBD.alternativaD = pergunta.alternativaD;
+                perguntaBD.alternativaE = pergunta.alternativaE;
+
+                return perguntaBD;
+            }
+        }
+
         public List<Pergunta> ListarPerguntas()
         {
             Pergunta pergunta = new Pergunta();
