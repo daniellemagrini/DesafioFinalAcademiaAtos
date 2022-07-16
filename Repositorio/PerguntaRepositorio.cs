@@ -65,6 +65,13 @@ namespace DesafioFinalAcademiaAtos.Repositorio
             {
                 int idSelecao = r.Next(1, lista.Count);
                 listaSelecionados.Add(idSelecao);
+
+                while (listaSelecionados.Contains(idSelecao))
+                {
+                    idSelecao = r.Next(1, lista.Count);
+                    listaSelecionados.Add(idSelecao);
+                }
+
                 listaSelecao.Add(idSelecao);
             }
             return listaSelecao;
