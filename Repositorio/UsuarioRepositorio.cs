@@ -53,13 +53,15 @@ namespace DesafioFinalAcademiaAtos.Repositorio
             {
                 throw new System.Exception("Tivemos um erro. Tente novamente mais tarde");
             }
+            else
+            {
+                usuario1.senha = usuario1.senha;
 
-            usuario1.senha = usuario1.senha;
+                _contexto.Usuario.Update(usuario1);
+                _contexto.SaveChanges();
 
-            _contexto.Usuario.Update(usuario1);
-            _contexto.SaveChanges();
-
-            return usuario;
+                return usuario;
+            }
         }
 
         public Usuario SenhaRedefinida(string senha)

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "CadastroUsuario";
+    Layout = "_LayoutDeslogado";
 }
 
 <!DOCTYPE html>
@@ -30,6 +31,13 @@
     <script src="/js/site.js"></script>
 
 </head>  
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-danger" role: "alert">Cadastrado com sucesso!
+        @TempData["MensagemSucesso"]
+    </div>
+}
 
 <body> 
     <div id="content" class="container">

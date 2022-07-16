@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DesafioFinalAcademiaAtos.Models;
+using DesafioFinalAcademiaAtos.Repositorio;
 
 namespace DesafioFinalAcademiaAtos.Controllers
 {
     public class PerguntasController : Controller
     {
         private readonly Contexto _context;
+        private readonly PerguntaRepositorio _perguntaRepositorio;
 
-        public PerguntasController(Contexto context)
+        public PerguntasController(Contexto context, PerguntaRepositorio perguntaRepositorio)
         {
             _context = context;
+            _perguntaRepositorio = perguntaRepositorio;
         }
 
         // GET: Perguntas
@@ -161,7 +164,8 @@ namespace DesafioFinalAcademiaAtos.Controllers
 
         public IActionResult ComecarTeste()
         {
-            return View("Index");
+            List<Pergunta> perguntas = _perguntaRepositorio.ListarPerguntas();
+            return View("perguntas");
         }
     }
 }

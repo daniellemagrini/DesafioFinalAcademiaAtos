@@ -1,7 +1,6 @@
-﻿@model IEnumerable<DesafioFinalAcademiaAtos.Models.Pergunta>
-
+﻿@model List<Pergunta>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Perguntas";
 }
 
 <!DOCTYPE html>
@@ -28,19 +27,27 @@
 
     <!-- JavaScript -->
     <script src="javascript.js" defer></script>
-
 </head>  
+
+
 
 <body style="background-color: #d3ceec">  
   <div class="container-tb">
   <table id="tabela" class="questoes">
-    <tr>É claro que há diferentes, digamos assim, tipos de curiosidade. Uma coisa é querer entender a essência da matéria e descobrir o átomo, outra é não sossegar até descobrir com quem a colega de escritório está saindo às escondidas e espalhar uma fofoca braba por toda a empresa. Apesar disso, a essência é a mesma: a necessidade humana de transformar o desconhecido em conhecido, deslindando os mistérios, esclarecendo as incógnitas, desnudando as verdades.</tr>
-    <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
-    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">Alternativa A</td></tr>
-    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">Alternativa B</td></tr>
-    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">Alternativa C</td></tr>
-    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">Alternativa D</td></tr>
-    <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">Alternativa E</td></tr>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (Pergunta pergunta in Model)
+                {
+                   <tr>@pergunta.pergunta</tr> 
+                   <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
+                   <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaA</td></tr>
+                   <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaB</td></tr>
+                   <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaC</td></tr>
+                   <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaD></td></tr>
+                   <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@pergunta.alternativaE</td></tr>
+                }
+            }   
   </table>
 
   <div class="form-group">
