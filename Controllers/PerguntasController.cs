@@ -171,10 +171,10 @@ namespace DesafioFinalAcademiaAtos.Controllers
                 if (ModelState.IsValid)
                 {
                     perguntaBD = _perguntaRepositorio.EscolhePergunta(pergunta);
-                    return View(pergunta);
+                    return View(perguntaBD);
                 }
 
-                return View(pergunta);
+                return View(perguntaBD);
             }
             catch(Exception e)
             {

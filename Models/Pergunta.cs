@@ -60,5 +60,9 @@ namespace DesafioFinalAcademiaAtos.Models
         [Display(Name = "Alternativa E")]
         [Required]
         public string alternativaE { get; set; }
+
+        public Pergunta()
+        {
+        }
     }
 }
