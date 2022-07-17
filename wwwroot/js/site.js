@@ -210,5 +210,10 @@ function pesquisacep(valor) {
         //cep sem valor, limpa formulário.
         limpa_formulário_cep();
     }
+    //Mostrar resposta
+    function showResposta() {
+
+        let resposta = document.getElementsByClassName("resposta").style.display = "block";
+    }
 };
 
