@@ -11,23 +11,33 @@ namespace DesafioFinalAcademiaAtos.Repositorio
             this._contexto = contexto;
         }
 
-        public Pergunta BuscaPergunta(int id)
+        public Pergunta BuscaPerguntaPortugues(int id)
         {
-            Random random = new Random();
-            id = random.Next(1,3);
+            List<Pergunta> listaPergunta = new List<Pergunta>();
+            listaPergunta = _contexto.Pergunta.ToList();
+            id = new Random().Next(1,listaPergunta.Count());
 
-            return _contexto.Pergunta.FirstOrDefault(x => x.Id == id);
+            Pergunta pergunta = listaPergunta[id];
+
+            while (pergunta.categoria != "Português")
+            {
+                id = new Random().Next(1, listaPergunta.Count());
+                pergunta = listaPergunta[id];
+            }
+
+            return pergunta;
+
         }
 
-        public Pergunta EscolhePergunta(Pergunta pergunta)
+        public Pergunta EscolhePerguntaPortugues(Pergunta pergunta)
         {
-            Pergunta perguntaBD = BuscaPergunta(pergunta.Id);
+            Pergunta perguntaBD = BuscaPerguntaPortugues(pergunta.Id);
 
             if (perguntaBD == null)
             {
                 throw new Exception("Houve uma falha na atualização");
             }
-            else
+            else if (pergunta.categoria == "Português")
             {
                 perguntaBD.pergunta = pergunta.pergunta;
                 perguntaBD.resposta = pergunta.resposta;
@@ -42,72 +52,95 @@ namespace DesafioFinalAcademiaAtos.Repositorio
 
                 return perguntaBD;
             }
+            return perguntaBD;
         }
 
-        public List<Pergunta> ListarPerguntas()
+        public Pergunta BuscaPerguntaIngles(int id)
         {
-            Pergunta pergunta = new Pergunta();
-            List<Pergunta> lista = new List<Pergunta>();
-            lista = _contexto.Pergunta.ToList();
+            List<Pergunta> listaPergunta = new List<Pergunta>();
+            listaPergunta = _contexto.Pergunta.ToList();
+            id = new Random().Next(1, listaPergunta.Count());
 
-            if (pergunta.categoria == "Português")
-            {               
-                List<Pergunta> listaPortugues = new List<Pergunta>();
+            Pergunta pergunta = listaPergunta[id];
 
-                foreach (Pergunta itemPergunta in lista)
-                {
-                    listaPortugues.Add(itemPergunta);                   
-                }
-                return listaPortugues;
-            }
-
-            if (pergunta.categoria == "Inglês")
+            while (pergunta.categoria != "Inglês")
             {
-                List<Pergunta> listaIngles = new List<Pergunta>();
-
-                foreach (Pergunta itemPergunta in lista)
-                {
-                    listaIngles.Add(itemPergunta);
-                }
-                return listaIngles;
+                id = new Random().Next(1, listaPergunta.Count());
+                pergunta = listaPergunta[id];
             }
 
-            if (pergunta.categoria == "Lógica")
-            {
-                List<Pergunta> listaLogica = new List<Pergunta>();
+            return pergunta;
 
-                foreach (Pergunta itemPergunta in lista)
-                {
-                    listaLogica.Add(itemPergunta);
-                }
-                return listaLogica;
-            }
-
-            return _contexto.Pergunta.ToList();
         }
 
-        public List<int> SelecionarPergunta()
+        public Pergunta EscolhePerguntaIngles(Pergunta pergunta)
         {
-            List<Pergunta> lista = new List<Pergunta>();
-            lista = ListarPerguntas();
-            List<int> listaSelecao = new List<int>();
-            List<int> listaSelecionados = new List<int>();
-            Random r = new Random();
+            Pergunta perguntaBD = BuscaPerguntaIngles(pergunta.Id);
 
-            for (int i = 0; i < 10; i++)
+            if (perguntaBD == null)
             {
-                int idSelecao = r.Next(1, lista.Count);
-                listaSelecionados.Add(idSelecao);
-
-                while (listaSelecionados.Contains(idSelecao))
-                {
-                    idSelecao = r.Next(1, lista.Count);
-                    listaSelecionados.Add(idSelecao);
-                }
-
-                listaSelecao.Add(idSelecao);
+                throw new Exception("Houve uma falha na atualização");
             }
-            return listaSelecao;
+            else if (pergunta.categoria == "Inglês")
+            {
+                perguntaBD.pergunta = pergunta.pergunta;
+                perguntaBD.resposta = pergunta.resposta;
+                perguntaBD.categoria = pergunta.categoria;
+                perguntaBD.nivel = pergunta.nivel;
+                perguntaBD.solucao = pergunta.solucao;
+                perguntaBD.alternativaA = pergunta.alternativaA;
+                perguntaBD.alternativaB = pergunta.alternativaB;
+                perguntaBD.alternativaC = pergunta.alternativaC;
+                perguntaBD.alternativaD = pergunta.alternativaD;
+                perguntaBD.alternativaE = pergunta.alternativaE;
+
+                return perguntaBD;
+            }
+            return perguntaBD;
+        }
+
+        public Pergunta BuscaPerguntaLogica(int id)
+        {
+            List<Pergunta> listaPergunta = new List<Pergunta>();
+            listaPergunta = _contexto.Pergunta.ToList();
+            id = new Random().Next(1, listaPergunta.Count());
+
+            Pergunta pergunta = listaPergunta[id];
+
+            while (pergunta.categoria != "Lógica")
+            {
+                id = new Random().Next(1, listaPergunta.Count());
+                pergunta = listaPergunta[id];
+            }
+
+            return pergunta;
+
+        }
+
+        public Pergunta EscolhePerguntaLogica(Pergunta pergunta)
+        {
+            Pergunta perguntaBD = BuscaPerguntaLogica(pergunta.Id);
+
+            if (perguntaBD == null)
+            {
+                throw new Exception("Houve uma falha na atualização");
+            }
+            else if (pergunta.categoria == "Lógica")
+            {
+                perguntaBD.pergunta = pergunta.pergunta;
+                perguntaBD.resposta = pergunta.resposta;
+                perguntaBD.categoria = pergunta.categoria;
+                perguntaBD.nivel = pergunta.nivel;
+                perguntaBD.solucao = pergunta.solucao;
+                perguntaBD.alternativaA = pergunta.alternativaA;
+                perguntaBD.alternativaB = pergunta.alternativaB;
+                perguntaBD.alternativaC = pergunta.alternativaC;
+                perguntaBD.alternativaD = pergunta.alternativaD;
+                perguntaBD.alternativaE = pergunta.alternativaE;
+
+                return perguntaBD;
+            }
+            return perguntaBD;
         }
     }
 }

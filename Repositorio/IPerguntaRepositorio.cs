@@ -4,9 +4,12 @@ namespace DesafioFinalAcademiaAtos.Repositorio
 {
     public interface IPerguntaRepositorio
     {
-        List<Pergunta> ListarPerguntas();
-        List<int> SelecionarPergunta();
-        Pergunta BuscaPergunta(int id);
-        Pergunta EscolhePergunta(Pergunta pergunta);
+        Pergunta BuscaPerguntaPortugues(int id);
+        Pergunta EscolhePerguntaPortugues(Pergunta pergunta);
+        Pergunta BuscaPerguntaIngles(int id);
+        Pergunta EscolhePerguntaIngles(Pergunta pergunta);
+        Pergunta BuscaPerguntaLogica(int id);
+        Pergunta EscolhePerguntaLogica(Pergunta pergunta);
     }
 }
+

@@ -1,7 +1,7 @@
 ﻿@model DesafioFinalAcademiaAtos.Models.Pergunta
 
 @{
-    ViewData["Title"] = "ComecarTeste";
+    ViewData["Title"] = "Comecar Teste de Português";
 }
 
 <!DOCTYPE html>
@@ -39,6 +39,7 @@
   <table id="tabela" class="questoes">
 
         <tr>@Html.DisplayFor(model => model.pergunta, new {@class="form-control", @id="pergunta", @disabled="true"})</tr>
+        <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
         <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaA, new {@class="form-control", @id="alternativaA", @disabled="true"})</td></tr>
         <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaB, new {@class="form-control", @id="alternativaB", @disabled="true"})</td></tr>
         <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaC, new {@class="form-control", @id="alternativaC", @disabled="true"})</td></tr>
@@ -50,7 +51,7 @@
 
   <div class="form-group">
     <input type="submit" value="Resposta" class="btn btn-secondary" /> 
-    <input type="submit" asp-controller="Perguntas" asp-action="ComecarTeste" value="Próxima" class="btn btn-primary" />
+    <input type="submit" asp-controller="Perguntas" asp-action="ComecarTestePortugues" value="Próxima" class="btn btn-primary" />
   </div>
 
   <div>

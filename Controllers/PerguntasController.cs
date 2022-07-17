@@ -162,15 +162,15 @@ namespace DesafioFinalAcademiaAtos.Controllers
           return (_context.Pergunta?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public IActionResult ComecarTeste(Pergunta pergunta)
+        public IActionResult ComecarTesteIngles(Pergunta pergunta)
         {
             try
             {
-                Pergunta perguntaBD = _perguntaRepositorio.BuscaPergunta(pergunta.Id);
+                Pergunta perguntaBD = _perguntaRepositorio.BuscaPerguntaIngles(pergunta.Id);
 
                 if (ModelState.IsValid)
                 {
-                    perguntaBD = _perguntaRepositorio.EscolhePergunta(pergunta);
+                    perguntaBD = _perguntaRepositorio.EscolhePerguntaIngles(pergunta);
                     return View(perguntaBD);
                 }
 
@@ -181,19 +181,54 @@ namespace DesafioFinalAcademiaAtos.Controllers
                 TempData["MensagemErro"] = $"Detalhe do erro: {e.Message}";
                 return RedirectToAction("Index", "Home");
             }
-            /*List<Pergunta> perguntaSelecionada = _perguntaRepositorio.ListarPerguntas();
-            List<int> idsSelecionados = new List<int>();
-            Random random = new Random();
-            int idSelecao = random.Next(1, perguntaSelecionada.Count);            
-            idsSelecionados.Add(idSelecao);
-
-            while (idsSelecionados.Contains(idSelecao))
+        }
+        public IActionResult ComecarTestePortugues(Pergunta pergunta)
+        {
+            try
             {
-                idSelecao = random.Next(1, perguntaSelecionada.Count);
-                idsSelecionados.Add(idSelecao);
-            }
+                Pergunta perguntaBD = null;
+                perguntaBD = _perguntaRepositorio.BuscaPerguntaPortugues(pergunta.Id);
 
-            return View(perguntaSelecionada);*/
+                if (ModelState.IsValid)
+                {
+                    if (perguntaBD.categoria == "Português")
+                    {
+                        perguntaBD = _perguntaRepositorio.EscolhePerguntaPortugues(pergunta);
+                        return View(perguntaBD);
+                    }
+                }
+
+                return View(perguntaBD);
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = $"Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public IActionResult ComecarTesteLogica(Pergunta pergunta)
+        {
+            try
+            {
+                Pergunta perguntaBD = null;
+                perguntaBD = _perguntaRepositorio.BuscaPerguntaLogica(pergunta.Id);
+
+                if (ModelState.IsValid)
+                {
+                    if (perguntaBD.categoria == "Lógica")
+                    {
+                        perguntaBD = _perguntaRepositorio.EscolhePerguntaLogica(pergunta);
+                        return View(perguntaBD);
+                    }
+                }
+
+                return View(perguntaBD);
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = $"Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
