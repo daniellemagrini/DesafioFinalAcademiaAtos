@@ -32,6 +32,11 @@
 
 </head>  
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-danger" role: "alert">@TempData["MensagemSucesso"]</div>
+}
+
 <body>    
 <section class="vh-100" style="margin: auto">
     <div class="container-sm">

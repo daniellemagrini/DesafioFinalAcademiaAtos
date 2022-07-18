@@ -65,10 +65,22 @@ namespace DesafioFinalAcademiaAtos.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.SenhaHash();
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Login");
+                Usuario usuarioEmail = _usuarioRepositorio.BuscaEmail(usuario.email);
+
+                if (usuarioEmail == null)
+                {
+                    usuario.SenhaHash();
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+                    TempData["MensagemSucesso"] = $"Usuário cadastrado com sucesso";
+                    return RedirectToAction("Index", "Login");
+                }
+
+                else
+                {
+                    TempData["MensagemErro"] = $"E-mail já cadastrado. Tente redefinir sua senha ou cadastre outro e-mail";
+                    return RedirectToAction("Index", "Login");
+                }
             }
             return View(usuario);
         }
