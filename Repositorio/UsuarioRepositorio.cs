@@ -63,10 +63,5 @@ namespace DesafioFinalAcademiaAtos.Repositorio
                 return usuario;
             }
         }
-
-        public Usuario SenhaRedefinida(string senha)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

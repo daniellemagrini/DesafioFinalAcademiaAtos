@@ -107,7 +107,7 @@ namespace DesafioFinalAcademiaAtos.Controllers
 
                         if (enviado)
                         {
-                            _usuarioRepositorio.SenhaRedefinida(usuario.senha);
+                            _usuarioRepositorio.SenhaRedefinida(usuario);
                             TempData["MensagemSucesso"] = $"Foi enviado uma nova senha. Favor verificar seu e-mail";
                         }
                         else

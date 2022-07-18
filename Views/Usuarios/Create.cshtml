@@ -32,13 +32,6 @@
 
 </head>  
 
-@if (TempData["MensagemSucesso"] != null)
-{
-    <div class="alert alert-danger" role: "alert">Cadastrado com sucesso!
-        @TempData["MensagemSucesso"]
-    </div>
-}
-
 <body> 
     <div id="content" class="container">
         <form asp-action="Create" id="form" name="form">
