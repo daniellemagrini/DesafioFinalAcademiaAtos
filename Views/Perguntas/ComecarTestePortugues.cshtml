@@ -4,6 +4,7 @@
     ViewData["Title"] = "Comecar Teste de Português";
 }
 
+
 <!DOCTYPE html>
 
 <html lang="pt-br">  <!--Idioma Português-Brasil-->
@@ -50,15 +51,20 @@
   </table>
         <span class="resposta" style ="font-weight:bold; display: none">Resposta:</span><span class="resposta" style ="display: none" style="color:red">@Html.DisplayFor(model => model.resposta, new {@class="form-control", @id="resposta", @disabled="true"})</span></tr>
 
+        @using (Html.BeginForm("ComecarTestePortugues", "Perguntas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
 
-  <div class="form-group">
-    <input type="button" value="Resposta" class="btn btn-secondary" onclick="showResposta()" /> 
-    <input type="submit" asp-action="ComecarTestePortugues" value="Próxima" class="btn btn-primary" />
-  </div>
 
-  <div>
-    <a asp-controller="Home" asp-action="Index">Voltar ao Menu principal</a>
-</div>
+      <div class="form-group">
+        <input type="button" value="Resposta" class="btn btn-secondary" onclick="showResposta()" /> 
+        <input type="submit" asp-action="ComecarTestePortugues" value="Próxima" class="btn btn-primary" />
+      </div>
+
+      <div>
+        <a asp-controller="Home" asp-action="Index">Voltar ao Menu principal</a>
+    </div>
+}
 
   </div>
 </body>

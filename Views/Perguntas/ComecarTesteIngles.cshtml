@@ -49,15 +49,19 @@
 
   </table>
 
-  <div class="form-group">
-    <input type="submit" value="Resposta" class="btn btn-secondary" onclick="showResposta()" /> 
-    <input type="submit" asp-controller="Perguntas" asp-action="ComecarTesteIngles" value="Próxima" class="btn btn-primary" />
-  </div>
+  @using (Html.BeginForm("ComecarTesteIngles", "Perguntas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
 
-  <div>
-    <a asp-controller="Home" asp-action="Index">Voltar ao Menu principal</a>
-</div>
+      <div class="form-group">
+        <input type="submit" value="Resposta" class="btn btn-secondary" onclick="showResposta()" /> 
+        <input type="submit" asp-controller="Perguntas" asp-action="ComecarTesteIngles" value="Próxima" class="btn btn-primary" />
+      </div>
 
+      <div>
+        <a asp-controller="Home" asp-action="Index">Voltar ao Menu principal</a>
+    </div>
+}
   </div>
 </body>
 </html>
