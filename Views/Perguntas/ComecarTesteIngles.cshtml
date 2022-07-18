@@ -24,10 +24,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Link estilo css-->
-    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/site.css"/>
 
     <!-- JavaScript -->
-    <script src="javascript.js" defer></script>
+    <script src="/js/site.js" defer></script>
 </head>  
 
 
@@ -40,16 +40,17 @@
        
       <tr>@Html.DisplayFor(model => model.pergunta, new {@class="form-control", @id="pergunta", @disabled="true"})</tr>
       <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
-      <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaA, new {@class="form-control", @id="alternativaA", @disabled="true"})</td></tr>
-      <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaB, new {@class="form-control", @id="alternativaB", @disabled="true"})</td></tr>
-      <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaC, new {@class="form-control", @id="alternativaC", @disabled="true"})</td></tr>
-      <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaD, new {@class="form-control", @id="alternativaD", @disabled="true"})</td></tr>
-      <tr><td class="col_titulo"><input type="radio"></td><td class="col_info">@Html.DisplayFor(model => model.alternativaE, new {@class="form-control", @id="alternativaE", @disabled="true"})</td></tr>    
-        
+      <tr><td class="col_titulo"><input type="radio"><label style="margin:5px">a)</label></td><td class="col_info">@Html.DisplayFor(model => model.alternativaA, new {@class="form-control", @id="alternativaA", @disabled="true"})</td></tr>
+      <tr><td class="col_titulo"><input type="radio"><label style="margin:5px">b)</label></td><td class="col_info">@Html.DisplayFor(model => model.alternativaB, new {@class="form-control", @id="alternativaB", @disabled="true"})</td></tr>
+      <tr><td class="col_titulo"><input type="radio"><label style="margin:5px">c)</label></td><td class="col_info">@Html.DisplayFor(model => model.alternativaC, new {@class="form-control", @id="alternativaC", @disabled="true"})</td></tr>
+      <tr><td class="col_titulo"><input type="radio"><label style="margin:5px">d)</label></td><td class="col_info">@Html.DisplayFor(model => model.alternativaD, new {@class="form-control", @id="alternativaD", @disabled="true"})</td></tr>
+      <tr><td class="col_titulo"><input type="radio"><label style="margin:5px">e)</label></td><td class="col_info">@Html.DisplayFor(model => model.alternativaE, new {@class="form-control", @id="alternativaE", @disabled="true"})</td></tr>    
+      <tr><td class="col_titulo"></td><td class="col_info"></td></tr>
+
   </table>
 
   <div class="form-group">
-    <input type="submit" value="Resposta" class="btn btn-secondary" /> 
+    <input type="submit" value="Resposta" class="btn btn-secondary" onclick="showResposta()" /> 
     <input type="submit" asp-controller="Perguntas" asp-action="ComecarTesteIngles" value="Próxima" class="btn btn-primary" />
   </div>
 
